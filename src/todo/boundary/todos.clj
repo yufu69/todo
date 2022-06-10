@@ -4,7 +4,9 @@
 (defprotocol Todos
   (get-todos [db])
   (find-todo [db id])
-  (create-todo [db params]))
+  (create-todo [db params])
+  (delete-todo [db id])
+  )
 
 (extend-protocol Todos
   duct.database.sql.Boundary
@@ -20,4 +22,9 @@
   ;;   (jdbc/get-by-id spec :todos id))
 
   (create-todo [{:keys [spec]} params]
-    (jdbc/insert! spec :todos {:title (:title params)})))
+    (jdbc/insert! spec :todos {:title (:title params)}))
+
+  (delete-todo [{:keys [spec]} id]
+    (jdbc/delete! spec :todos ["id = ?" id]))
+  
+  )

@@ -21,3 +21,9 @@
       [::response/created (str "/todos/" id)]))
   )
 
+(defmethod ig/init-key ::delete [_ {:keys [db]}]
+  (fn [{[_ id] :ataraxy/result}]
+    (todos/delete-todo db id)
+    [::response/no-content])
+ )
+
