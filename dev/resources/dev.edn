@@ -1,0 +1,12 @@
+{:duct.database/sql
+ {:connection-uri "jdbc:postgresql://localhost:5432/todo-db?user=username01&password=password01"}
+
+ :duct.migrator/ragtime
+ {:migrations [#ig/ref :todo.migration/create-todos]}
+
+ [:duct.migrator.ragtime/sql :todo.migration/create-todos]
+ {:up ["CREATE TABLE todos (id SERIAL PRIMARY KEY, title TEXT)"
+       "INSERT INTO todos (title) values('test1')"
+       "INSERT INTO todos (title) values('test2')"]
+  :down ["DROP TABLE todos"]}
+ }
