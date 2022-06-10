@@ -1,1 +1,0 @@
-["^ ","~$Todos",["^ ","~:row",4,"~:col",1,"~:name","^0","~:ns","~$todo.boundary.todos","~:top-ns","^5"],"~$get-todos",["^ ","^1",4,"^2",1,"~:fixed-arities",["~#set",[1]],"^3","^7","^4","^5","^6","^5"],"~$create-todo",["^ ","^1",4,"^2",1,"^8",["^9",[2]],"^3","^:","^4","^5","^6","^5"],"~:filename","/home/y-ogasawara/source/study/cloure/todo/src/todo/boundary/todos.clj"]

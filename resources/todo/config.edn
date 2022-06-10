@@ -4,10 +4,12 @@
   :duct.router/ataraxy
   {:routes
    {[:get "/todos"] [:todo.handler.todos/list]
+    [:get "/todos/" id] [:todo.handler.todos/find ^int id]
     [:post "/todos" {body :body-params}] [:todo.handler.todos/create body]}
    }
   
   :todo.handler.todos/list {:db #ig/ref :duct.database/sql}
+  :todo.handler.todos/find {:db #ig/ref :duct.database/sql}
   :todo.handler.todos/create {:db #ig/ref :duct.database/sql}
   
   }
