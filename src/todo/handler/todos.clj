@@ -21,6 +21,12 @@
       [::response/created (str "/todos/" id)]))
   )
 
+(defmethod ig/init-key ::update [_ {:keys [db]}]
+  (fn [{[_ id params] :ataraxy/result}]
+    (todos/update-todo db id params)
+    (let [result (todos/find-todo db id)]
+      [::response/ok result])))
+
 (defmethod ig/init-key ::delete [_ {:keys [db]}]
   (fn [{[_ id] :ataraxy/result}]
     (todos/delete-todo db id)

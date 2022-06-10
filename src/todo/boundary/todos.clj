@@ -5,6 +5,7 @@
   (get-todos [db])
   (find-todo [db id])
   (create-todo [db params])
+  (update-todo [db id params])
   (delete-todo [db id])
   )
 
@@ -23,6 +24,9 @@
 
   (create-todo [{:keys [spec]} params]
     (jdbc/insert! spec :todos {:title (:title params)}))
+
+  (update-todo [{:keys [spec]} id params]
+    (jdbc/update! spec :todos {:title (:title params)} ["id = ?" id]))
 
   (delete-todo [{:keys [spec]} id]
     (jdbc/delete! spec :todos ["id = ?" id]))

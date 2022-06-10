@@ -6,14 +6,15 @@
    {[:get "/todos"] [:todo.handler.todos/list]
     [:get "/todos/" id] [:todo.handler.todos/find ^int id]
     [:post "/todos" {body :body-params}] [:todo.handler.todos/create body]
+    [:put "/todos/" id {body :body-params}] [:todo.handler.todos/update ^int id body]
     [:delete "/todos/" id] [:todo.handler.todos/delete ^int id]}
    }
   
   :todo.handler.todos/list {:db #ig/ref :duct.database/sql}
   :todo.handler.todos/find {:db #ig/ref :duct.database/sql}
   :todo.handler.todos/create {:db #ig/ref :duct.database/sql}
+  :todo.handler.todos/update {:db #ig/ref :duct.database/sql}
   :todo.handler.todos/delete {:db #ig/ref :duct.database/sql}
-  
   }
 
  :duct.profile/dev   #duct/include "dev"
